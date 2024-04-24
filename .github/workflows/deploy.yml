@@ -28,3 +28,4 @@ jobs:
         with:
           branch: main
           folder: reports
+          github_token: ${{ secrets.GITHUB_TOKEN }}
