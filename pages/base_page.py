@@ -24,13 +24,13 @@ class BasePage:
 
    #Este metodo nos permite buscar la opcion de cursos en el menu superior y darle click
   def click_my_courses(self):
-    course_menu = By.XPATH, "//ul[@id='moremenu-662887f467fb2-navbar-nav']//li[@data-key='mycourses']"
+    course_menu = By.XPATH, "//ul[@role='menubar']//li[@data-key='mycourses']//a[@role='menuitem']"  
     self.click(course_menu)
 
    #Este metodo nos permite buscar cualquier item en el menu superior y darle click
   def click_menu_item(self, menu_item):
-    item = By.XPATH, "//ul[@id='moremenu-662887f467fb2-navbar-nav']//li[@data-key=' "+menu_item+"']"
+    item = By.XPATH, "//ul[@role='menubar']//li[@data-key='"+menu_item+"']//a[@role='menuitem']" 
     self.click(item)
 
   def menu_item(self, menu_item):
-    return By.XPATH, "//ul[@id='moremenu-662887f467fb2-navbar-nav']//li[@data-key=' "+menu_item+"']"
+    return By.XPATH, "//ul[@role='menubar']//li[@data-key='"+menu_item+"']//a[@role='menuitem']"
