@@ -29,7 +29,7 @@ jobs:
       - name: Run tests with coverage 🔍
         run: coverage run -m pytest --alluredir=AllureReport --html=Reports.html
         id: test
-        continue-on-error: true  # Continuar con el flujo incluso si los tests fallan
+        continue-on-error: false  # Continuar con el flujo incluso si los tests fallan, de lo contrario se pone false
   
       - name: Generate coverage report 📊
         run: coverage html -d coverageResults
@@ -42,12 +42,8 @@ jobs:
           git commit -m "Add coverage results" || echo "No changes to commit"
 
       - name: Deploy 🚀
-        if: steps.test.outcome == 'success'
+        if: steps.test.outcome == 'success' # No se realiza despliegue si los test no pasan
         uses: peaceiris/actions-gh-pages@v3
         with:
           publish_dir: .
           github_token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Deploy Results 📜
-        if: steps.test.outcome != 'success'
-        run: echo "No se realiza deploy ya que no se cumple con los tests"
