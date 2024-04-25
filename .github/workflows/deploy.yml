@@ -24,13 +24,22 @@ jobs:
       - name: Install dependencies 🔧
         run: |
           python -m pip install --upgrade pip
-          pip install pytest allure-pytest selenium pytest-html 
-      
-      - name: Run tests 🔍
-        #run: pytest --alluredir=AllureReport --html=Reports.html
+          pip install coverage pytest allure-pytest selenium pytest-html 
+
+      - name: Run tests with coverage 🔍
         run: coverage run -m pytest --alluredir=AllureReport --html=Reports.html
         id: test
         continue-on-error: true  # Continuar con el flujo incluso si los tests fallan
+  
+      - name: Generate coverage report 📊
+        run: coverage html -d coverageResults
+
+      - name: Copy coverage results to repository 📁
+        run: |
+          mkdir -p coverageResultsInRepo
+          cp -R coverageResults/* coverageResultsInRepo/
+          git add coverageResultsInRepo
+          git commit -m "Add coverage results" || echo "No changes to commit"
 
       - name: Deploy 🚀
         # if: steps.test.outcome == 'success' 
