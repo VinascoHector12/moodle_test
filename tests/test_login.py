@@ -1,13 +1,16 @@
 from pages.login_page import LoginPage
 from tests.base_test import BaseTest
 from utilities.test_data import TestData
+import time
 
 class TestLogin(BaseTest):
 
   def test_valid_credentials(self):
     login_page = LoginPage(self.driver)
     login_page.set_username(TestData.username)
+    time.sleep(1)
     login_page.set_password(TestData.password)
+    time.sleep(1)
     login_page.click_login_button()
     actual_title = login_page.get_title()
     assert actual_title == "Área personal | Test"

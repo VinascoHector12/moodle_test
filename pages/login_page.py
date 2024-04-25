@@ -1,6 +1,7 @@
 from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
 from pages.my_account_page import MyAccountPage
+import time
 
 class LoginPage(BasePage):
   user_name_field = (By.ID, "username")
@@ -24,7 +25,9 @@ class LoginPage(BasePage):
 
   def log_into_application(self, username, password):
     self.set_username(username)
+    time.sleep(1)
     self.set_password(password)
+    time.sleep(1)
     self.click_login_button()
 
   def get_warning_message(self):

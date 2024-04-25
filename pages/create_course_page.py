@@ -1,6 +1,7 @@
 from pages.base_page import BasePage
 from pages.my_account_page import MyAccountPage
 from selenium.webdriver.common.by import By
+import time
 
 class CreateCoursesPage(BasePage):
 
@@ -18,13 +19,16 @@ class CreateCoursesPage(BasePage):
   def go_to_course_module(self):
     base_page = BasePage(self.driver)
     base_page.click_my_courses()
+    time.sleep(1)
     self.click(self.course_options)
     self.click(self.new_course_field)
     return MyAccountPage(self.driver)
 
   def create_course(self, full_name, short_name):
     self.set(self.full_name_field, full_name)
+    time.sleep(1)
     self.set(self.short_name_field, short_name)
+    time.sleep(1)
     self.click(self.save_button)
     return MyAccountPage(self.driver)
 
