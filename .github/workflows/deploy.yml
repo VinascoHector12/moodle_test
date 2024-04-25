@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies 🔧
         run: |
           python -m pip install --upgrade pip
-          pip install requests coverage pytest allure-pytest selenium pytest-html 
+          pip install streamlit requests coverage pytest allure-pytest selenium pytest-html 
 
       - name: Run tests with coverage 🔍
         run: coverage run -m pytest --alluredir=AllureReport --html=Reports.html
