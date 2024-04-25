@@ -42,7 +42,7 @@ jobs:
           git commit -m "Add coverage results" || echo "No changes to commit"
 
       - name: Deploy 🚀
-        # if: steps.test.outcome == 'success' 
+        if: steps.test.outcome == 'success' 
         uses: peaceiris/actions-gh-pages@v3
         with:
           publish_dir: .
