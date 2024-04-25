@@ -1,0 +1,22 @@
+#Para revisar cobertura
+ coverage run [archivo.py] (o directorio)
+
+#Generar reporte en consola
+ coverage report
+
+#Generar reporte de cobertuta html
+coverage html -d [nombre_directorio]
+
+#Para generar reporte de pruebas HTML
+ pytest tests --html=Reports.html
+
+#Generar archivos de allure .json
+pytest --alluredir=[nombre_directorio] (AllureReport)
+
+#Generar servidor para ver graficos allure
+- Descargar zip de allure
+  url: https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.28.0/
+- Descomprimir y agregar ruta del bin en variables de entorno dentro del path
+- Ejecutar: allure serve [ruta_carpeta_con_archivos_.json] (allure serve .\AllureReport\
+
+
