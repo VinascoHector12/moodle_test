@@ -27,8 +27,7 @@ jobs:
           pip install pytest allure-pytest selenium pytest-html
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          branch: main
-          folder: reports
+          publish_dir: .
           github_token: ${{ secrets.GITHUB_TOKEN }}
