@@ -13,6 +13,9 @@ coverage html -d [nombre_directorio]
 #Generar archivos de allure .json
 pytest --alluredir=[nombre_directorio] (AllureReport)
 
+#Generar reporte de pruebas y archivos allure
+pytest --alluredir=AllureReport --html=Reports.html
+
 #Generar servidor para ver graficos allure
 - Descargar zip de allure
   url: https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.28.0/
