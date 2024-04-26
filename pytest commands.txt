@@ -14,7 +14,7 @@ coverage html -d [nombre_directorio]
 pytest --alluredir=[nombre_directorio] (AllureReport)
 
 #Generar reporte de pruebas y archivos allure
-pytest --alluredir=AllureReport --html=Reports.html
+pytest --alluredir=AllureReport --html=reports/Reports.html
 
 #Generar servidor para ver graficos allure
 - Descargar zip de allure
@@ -22,4 +22,10 @@ pytest --alluredir=AllureReport --html=Reports.html
 - Descomprimir y agregar ruta del bin en variables de entorno dentro del path
 - Ejecutar: allure serve [ruta_carpeta_con_archivos_.json] (allure serve .\AllureReport\
 
+
+coverage run -m pytest --alluredir=AllureReport --html=reports/Reports.html
+coverage html -d coverageResults
+
+#Para ver complejidad ciclomatica
+radon cc -s  api_client  
 

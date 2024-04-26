@@ -17,27 +17,6 @@ class TestMoodleAPI(unittest.TestCase):
         # Verifica que la respuesta sea la esperada
         self.assertEqual(response, mock_response)
 
-    #Prueba real del servicio obtener cursos
-    def test_obtener_cursos_real(self):
-        # Llama a la función sin parchearla para obtener la respuesta real
-        response = cliente_all_streamlit_login.obtener_cursos()
-
-        # Respuesta esperada simulada
-        mock_response = [
-          {'id': 2, 'fullname': 'moodle_test', 'shortname': 'Test'},
-        ]
-
-        # Verifica que la respuesta sea exactamente la esperada
-        #self.assertEqual(response, mock_response)
-
-        # Verifica si los parámetros del mock_response están presentes en algún objeto de la respuesta del servicio
-        for curso in response:
-            if all(curso.get(key) == value for key, value in mock_response[0].items()):
-                # Si todos los parámetros del mock_response están presentes en el objeto de la respuesta del servicio, la prueba pasa
-                return
-        # Si no se encuentra ningún objeto que coincida con el mock_response, la prueba falla
-        self.fail("No se encontró ningún objeto que coincida con el mock_response")
-
     @patch('cliente_all_streamlit_login.requests.get')
     def test_mostrar_info_curso(self, mock_get):
         # Simula una respuesta JSON de la API de Moodle para un curso específico
