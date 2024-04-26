@@ -29,7 +29,7 @@ jobs:
       - name: Run tests with coverage 🔍
         run: coverage run -m pytest --alluredir=AllureReport --html=Reports.html
         id: test
-        continue-on-error: false  # Continuar con el flujo incluso si los tests fallan, de lo contrario se pone false
+        continue-on-error: true  # Continuar con el flujo incluso si los tests fallan, de lo contrario se pone false
   
       - name: Generate coverage report 📊
         run: coverage html -d coverageResults

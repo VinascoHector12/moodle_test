@@ -1,6 +1,6 @@
 import requests
 import streamlit as st
-import json  # Importación necesaria para manejar la codificación de los cursos al modificar
+import json  # Importación para manejar la codificación de los cursos al modificar
 
 # Configuración inicial
 MOODLE_URL = 'http://localhost:8080/webservice/rest/server.php'
@@ -52,7 +52,7 @@ def eliminar_curso(courseid):
         'courseids[0]': courseid,
     }
     respuesta = requests.post(MOODLE_URL, params=parametros)
-    return respuesta.text  # Moodle no devuelve un JSON al eliminar cursos, así que usamos text
+    return respuesta.text  # Moodle no devuelve un JSON al eliminar cursos
 
 def modificar_curso(courseid, shortname=None, fullname=None, categoryid=None):
     """Modifica un curso en Moodle."""
